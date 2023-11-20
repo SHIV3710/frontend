@@ -60,7 +60,7 @@ const Gettask = async (task) => {
     const val = task.ind;
     // console.log(task);
   try {
-    const status = await axios.get("https://backend-eight-mu.vercel.app/api/quick/gettaskpriority", {
+    const status = await axios.get("http://localhost:4000/api/quick/gettaskpriority", {
       params: {
        Priority: val,
       }

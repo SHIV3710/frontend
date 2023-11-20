@@ -14,10 +14,10 @@ import { PiFireSimpleFill } from "react-icons/pi";
 export const Card = ({card,flag}) => { 
   const [avatar, setAvatar] = useState("Shiv Kumar");
   const icons = [<RxBorderDotted style={{fontSize:"15px"}}/>,<PiFireSimpleFill style={{color:"orange" ,fontSize:"15px"}}/>,<MdNetworkWifi3Bar style={{fontSize:"15px"}}/>,<MdNetworkWifi2Bar style={{fontSize:"15px"}}/>,<MdNetworkWifi1Bar style={{fontSize:"15px"}}/>];
-  const [avai,setavai] = useState(false);
+  const [avai,setavai] = useState();
   const findavatar = async () => {
     try {
-       const status = await axios.get("https://backend-eight-mu.vercel.app/api/quick/getuser",{
+       const status = await axios.get("http://localhost:4000/api/quick/getuser",{
         params:{
           Id:card.UserID,
         }
@@ -31,13 +31,14 @@ export const Card = ({card,flag}) => {
   useEffect(()=>{
     findavatar();
   },[])
+    console.log(avai);
 
   return (
     <Main>
         <div className="cam">{card.ID}</div>
         <div className="desc">{card.Title}</div>
         {
-          flag=="user"?<></>:<div className="avatar">{avatar !== null && <Avatar name={avatar} />} </div>
+          flag=="user"?<></>:<div className="avatar">{avatar !== null && <Avatar name={avatar} avai={avai}/>} </div>
         }
         <div className="icon"><div className="prior">{icons[card.Priority]}</div><div className="feature"><GiPlainCircle/><p>Feature Request</p></div></div>  
         

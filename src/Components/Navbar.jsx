@@ -4,13 +4,12 @@ import { FiPlus } from "react-icons/fi";
 import { BsThreeDots } from "react-icons/bs";
 import { Avatar } from './Avatar';
 
-export const Navbar = ({name,count,icon,flag}) => {
+export const Navbar = ({name,count,icon,flag,avai}) => {
   return (
     <Main>
         {
-          flag=="user"?<div className="circle"><Avatar name={name}/></div>:<div className="circle">{icon}</div>
+          flag=="user"?<div className="circle"><Avatar name={name} avai={avai}/></div>:<div className="circle">{icon}</div>
         }
-        {/* <div className="circle">{icon}</div> */}
         <div className="mid">
         <span className="name">{name}</span>
         <div className="count">{count}</div>

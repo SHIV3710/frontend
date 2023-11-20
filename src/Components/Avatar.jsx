@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import styled from 'styled-components'
 import { BsFillCircleFill } from "react-icons/bs";
 
-export const Avatar = ({name}) => {
+export const Avatar = ({name,avai}) => {
   let a = "";
   let b = "";
   const len = name.length;
@@ -14,7 +14,8 @@ export const Avatar = ({name}) => {
       break;
     }
   } 
-
+  if(avai)
+  console.log(avai);
   const randomColor = "#" + Math. floor(Math. random() * 2000);
   return (
     <Main>
@@ -22,7 +23,7 @@ export const Avatar = ({name}) => {
         {a+b} 
         </div>
         <div className="status">
-        <BsFillCircleFill/>
+        <BsFillCircleFill style={{color:avai?"green":"grey"}}/>
         </div>
     </Main>
   )
@@ -53,7 +54,7 @@ const Main = styled.div`
         align-self: flex-end;
         justify-self: end;
         border: 2px solid white;
-        color:black;
+        /* color:black; */
         border-radius: 50%;
       }
       

@@ -16,8 +16,8 @@ import { FcTodoList } from "react-icons/fc";
 import { FaBarsProgress } from "react-icons/fa6";
 import { MdOutlinePendingActions } from "react-icons/md";
 
-export const Single = ({navname,flag,icon=<FaCheckCircle/>,sort}) => {
-  
+export const Single = ({navname,flag,icon=<FaCheckCircle/>,sort,avai}) => {
+  console.log(navname,avai);
   const [task,settask] = useState([]);
   const prior = ["No Priority","Urgent","High","Medium","Low"];
   const icons = [<RxBorderDotted/>,<PiFireSimpleFill style={{color:"orange"}}/>,<MdNetworkWifi3Bar/>,<MdNetworkWifi2Bar/>,<MdNetworkWifi1Bar/>];
@@ -32,7 +32,7 @@ export const Single = ({navname,flag,icon=<FaCheckCircle/>,sort}) => {
 
       if(flag=="user"){
           try {
-              res = await axios.get("https://backend-eight-mu.vercel.app/api/quick/getuser",{
+              res = await axios.get("http://localhost:4000/api/quick/getuser",{
               params:{
               Name:name,
             }
@@ -47,7 +47,7 @@ export const Single = ({navname,flag,icon=<FaCheckCircle/>,sort}) => {
 
             const priority = parseInt(name);
 
-            res = await axios.get("https://backend-eight-mu.vercel.app/api/quick/gettaskpriority",{
+            res = await axios.get("http://localhost:4000/api/quick/gettaskpriority",{
               params:{
                 Priority:priority,
               }
@@ -62,7 +62,7 @@ export const Single = ({navname,flag,icon=<FaCheckCircle/>,sort}) => {
       }
       else if(flag=="status"){
         try {
-          res = await axios.get("https://backend-eight-mu.vercel.app/api/quick/gettask",{
+          res = await axios.get("http://localhost:4000/api/quick/gettask",{
             params:{
               Status:name,
             }
@@ -97,19 +97,17 @@ export const Single = ({navname,flag,icon=<FaCheckCircle/>,sort}) => {
     }
   }
   console.log(sort);
-  // console.log("unsorted",task);
 
   useEffect(()=>{
     handlesort();
   },[sort])
 
-  // console.log("sorted",task);
   return (
     <Main>
         {flag=="priority"?
           <Navbar name={prior[str]} count = {task.length} icon={icons[str]} flag={flag}/>
           :
-          <Navbar name={navname} count = {task.length} icon={icon} flag={flag}/>
+          <Navbar name={navname} count = {task.length} icon={icon} flag={flag} avai={avai}/>
         }
         {
           flag=="user"?<>

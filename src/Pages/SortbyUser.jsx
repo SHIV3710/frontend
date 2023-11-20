@@ -5,15 +5,18 @@ import { Card } from '../Components/Card';
 import { Sort } from '../Components/Sort';
 import { Single } from '../Components/Single';
 
+// https://backend-eight-mu.vercel.app/api/quick/task
+
 export const SortbyUser = ({sort}) => {
   const [users, setUsers] = useState([]);
   const [sortedUsers, setSortedUsers] = useState([]);
 
   const getAllUsers = async () => {
     try {
-      const status = await axios.get("https://backend-eight-mu.vercel.app/api/quick/task");
-     
+      const status = await axios.get("http://localhost:4000/api/quick/task");
+      console.log(status);
       setUsers(status.data.result);
+
     } catch (error) {
       console.log(error);
     }
@@ -23,23 +26,24 @@ export const SortbyUser = ({sort}) => {
     getAllUsers();
   }, []);
 
+  if(users){
+    console.log(users);
+  }
+
   useEffect(() => {
     if (users) {
-      const sortedArray = [...users].sort((p1, p2) => (p1> p2) ? 1 : (p1 < p2) ? -1 : 0);
+      const sortedArray = [...users].sort((p1, p2) => (p1[0] > p2[0]) ? 1 : (p1[0] < p2[0]) ? -1 : 0);
       setSortedUsers(sortedArray);
     }
   }, [users]);
-
-  // console.log(sortedUsers);
   return (
     <Main>
       <Lower>
             
-            {
+            {sortedUsers?
               sortedUsers.map((user,index)=>{
-                // console.log(user);
-                return <Single navname={user} flag="user" sort={sort}/>
-              })
+                return <Single navname={user.Name} flag="user" sort={sort} avai={user.Available}/>
+              }):<></>
             }
       </Lower>
     </Main>
@@ -75,6 +79,5 @@ const Lower = styled.div`
     @media screen and (max-width: 500px) {
       display: flex;
         flex-direction:column;
-        /* justify-content: space-around; */
     }
 `
