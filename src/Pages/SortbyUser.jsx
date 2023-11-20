@@ -5,14 +5,14 @@ import { Card } from '../Components/Card';
 import { Sort } from '../Components/Sort';
 import { Single } from '../Components/Single';
 
-export const SortbyUser = () => {
+export const SortbyUser = ({sort}) => {
   const [users, setUsers] = useState([]);
   const [sortedUsers, setSortedUsers] = useState([]);
 
   const getAllUsers = async () => {
     try {
       const status = await axios.get("https://backend-eight-mu.vercel.app/api/quick/task");
-      console.log(status);
+      // console.log(status);
       setUsers(status.data.result);
     } catch (error) {
       console.log(error);
@@ -30,15 +30,15 @@ export const SortbyUser = () => {
     }
   }, [users]);
 
-  console.log(sortedUsers);
+  // console.log(sortedUsers);
   return (
     <Main>
       <Lower>
             
             {
               sortedUsers.map((user,index)=>{
-                console.log(user);
-                return <Single navname={user} flag="user"/>
+                // console.log(user);
+                return <Single navname={user} flag="user" sort={sort}/>
               })
             }
       </Lower>
@@ -48,9 +48,10 @@ export const SortbyUser = () => {
 
 const Main = styled.div`
     height:100vh;
-    width:100vw;
+    width:95vw;
     display: flex;
     flex-direction: column;
+    align-items: center;
 
 `
 const Upper = styled.div`   

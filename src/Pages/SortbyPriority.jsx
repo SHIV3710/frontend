@@ -19,7 +19,7 @@ import { Sort } from '../Components/Sort';
 import { Single } from '../Components/Single';
 
 
-export const SortbyPriority = () => {
+export const SortbyPriority = ({sort}) => {
 
   const [Nopriority,setNoPriority] = useState([]);
   const [Urgent,setUrgent] = useState([]);
@@ -91,11 +91,11 @@ useEffect(() => {
   return (
     <Main>
         <Lower>
-            <Single navname="0" flag="priority"></Single>
-            <Single navname="1" flag="priority"></Single>
-            <Single navname="2" flag="priority"></Single>
-            <Single navname="3" flag="priority"></Single>
-            <Single navname="4" flag="priority"></Single>
+            <Single navname="0" flag="priority" sort={sort}></Single>
+            <Single navname="1" flag="priority" sort={sort}></Single>
+            <Single navname="2" flag="priority" sort={sort}></Single>
+            <Single navname="3" flag="priority" sort={sort}></Single>
+            <Single navname="4" flag="priority" sort={sort}></Single>
         </Lower>
     </Main>
   )
@@ -103,9 +103,10 @@ useEffect(() => {
 
 const Main = styled.div`
     height:100vh;
-    width:100vw;
+    width:95vw;
     display: flex;
     flex-direction: column;
+    
 
 `
 const Upper = styled.div`
@@ -114,7 +115,7 @@ const Upper = styled.div`
 const Lower = styled.div`
     display: flex;
     justify-content: center;
-    justify-content: space-around;
+    align-items: center;
     @media screen and (max-width: 1300px) {
         display: grid;
         justify-content: space-evenly;
@@ -124,10 +125,6 @@ const Lower = styled.div`
     @media screen and (max-width: 900px) {
       display: flex;
         flex-direction:column;
-  }
-    @media screen and (max-width: 900px) {
-      display: flex;
-        flex-direction:column;
-        /* justify-content: space-around; */
+        align-items: center;
     }
 `

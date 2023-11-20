@@ -16,7 +16,7 @@ import { FcTodoList } from "react-icons/fc";
 import { FaBarsProgress } from "react-icons/fa6";
 import { MdOutlinePendingActions } from "react-icons/md";
 
-export const Single = ({navname,flag,icon=<FaCheckCircle/>}) => {
+export const Single = ({navname,flag,icon=<FaCheckCircle/>,sort}) => {
   
   const [task,settask] = useState([]);
   const prior = ["No Priority","Urgent","High","Medium","Low"];
@@ -80,6 +80,30 @@ export const Single = ({navname,flag,icon=<FaCheckCircle/>}) => {
   }
   
   const str = parseInt(navname);
+
+  const handlesort = async () => {
+    try {
+      if(sort==="priority"){
+        const sortedArray = [...task].sort((p1, p2) => (p1.Priority> p2.Priority) ? 1 : (p1.Priority < p2.Priority) ? -1 : 0);
+        settask(sortedArray);
+      }
+      else if(sort==="status"){
+        const sortedArray = [...task].sort((p1, p2) => (p1.Title> p2.Title) ? 1 : (p1.Title < p2.Title) ? -1 : 0);
+        settask(sortedArray);
+      }
+      
+    } catch (error) {
+      console.log(error);
+    }
+  }
+  console.log({sort});
+  // console.log("unsorted",task);
+
+  useEffect(()=>{
+    handlesort();
+  },[sort])
+
+  console.log("sorted",task);
   return (
     <Main>
         {flag=="priority"?
@@ -103,19 +127,20 @@ export const Single = ({navname,flag,icon=<FaCheckCircle/>}) => {
           </>
         }
     </Main>
-  )
-}
-
+  )};
 const Main = styled.div`
   width:auto;
+  display: flex;
+  flex-direction: column;
+  
   @media screen and (max-width: 1600px) {
         height: auto;
         width:auto;
         align-self: flex-start;
-        justify-self: center;
+        /* justify-self: center; */
   }
-  @media screen and (max-width: 1300px) {
-        align-self: center;
+  @media screen and (max-width: 900px) {
+        align-self: flex-start;
         width:auto;
 
   }

@@ -17,21 +17,45 @@ export const Avatar = ({name}) => {
 
   const randomColor = "#" + Math. floor(Math. random() * 2000);
   return (
-    <Main style={{backgroundColor:randomColor}}>
-        {a+b}
+    <Main>
+        <div className="avatar" style={{backgroundColor:randomColor}}>
+        {a+b} 
+        </div>
+        <div className="status">
+        <BsFillCircleFill/>
+        </div>
     </Main>
   )
 }
 
 const Main = styled.div`
-    height:25px;
-    width:25px;
-    font-family: "Helvetica Neue",Helvetica;
+    height:100%;
+    width:100%;
     display: flex;
-    align-items: center;
-    justify-content: center;
-    border-radius: 50%;
-    font-size:12px;
-    font-weight: bold;
-    color:black;
+    .avatar{
+      height:30px;
+      width:30px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: bold;
+      color:black;
+    }
+    .status{
+      height:30px;
+      width:30px;
+      position: absolute;
+      display: flex;
+      justify-content: end;
+      svg{
+        font-size:7px;
+        align-self: flex-end;
+        justify-self: end;
+        border: 2px solid white;
+        color:black;
+        border-radius: 50%;
+      }
+      
+    }
 `

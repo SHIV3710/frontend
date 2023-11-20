@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { Sort } from '../Components/Sort';
 import styled from 'styled-components';
 import { Display } from './Display';
@@ -8,27 +8,37 @@ import { SortbyPriority } from './SortbyPriority';
 export const MainPAge = () => {
 
     const [url,seturl] = useState("/");
-
+    const [sort,setsort] = useState("priority");
+ 
     const handleurl = (newvalue) => {
         seturl(newvalue);
     }
+    const handleprior = (newvalue) => {
+        setsort(newvalue);
+    }
 
-    let content;
+    const [content,setcontent] = useState(null);
 
-    if(url==="/"){
-        content = <SortbyUser/>
-    }
-    else if(url==="/status"){
-        content = <Display/>
-    }
-    else{
-        content = <SortbyPriority/>
-    }
+    useEffect(() => {
+        if(url==="/"){
+            setcontent(<SortbyUser sort={sort}/>);
+        }
+        else if(url==="/status"){
+            setcontent(<Display sort={sort}/>);
+        }
+        else{
+            setcontent(<SortbyPriority sort={sort}/>);
+        }
+        console.log(url,sort);
+    },[url,sort])
+
+
+    console.log(sort);
 
   return (
     <Main>
         <Upper>
-            <Sort help={handleurl}/>
+            <Sort help={handleurl} cut={handleprior}/>
         </Upper>
         <Lower>
             {content}
@@ -40,14 +50,15 @@ export const MainPAge = () => {
 const Main = styled.div`
     display: flex;
     flex-direction: column;
-    /* justify-content: space-around; */
 
 `
 const Lower = styled.div`
-/* width:auto;  */
-
+margin-top:5vh;
+display: flex;
+justify-content: center;
+align-items: center;
 `
 const Upper = styled.div`
-width:auto; 
+position: absolute;
 
 `

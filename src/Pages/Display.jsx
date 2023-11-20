@@ -19,7 +19,7 @@ import { MdOutlinePendingActions } from "react-icons/md";
 
 
 
-export const Display = () => {
+export const Display = ({sort}) => {
     const [status,setstatus] = useState([]);
     const iconstatus = [<FcTodoList/>,<FaBarsProgress/>,<MdOutlinePendingActions/>];
 
@@ -53,14 +53,14 @@ export const Display = () => {
     {
         setpage(data);
     }
-
+    console.log(sort);
     
     return (
         <Main>
             <Lower>
             {
                 status.map((data,index)=>{
-                    return <Single navname={data} flag="status" icon={iconstatus[index]}/>;
+                    return <Single navname={data} flag="status" icon={iconstatus[index]} sort={sort}/>;
                 })
             }
             </Lower>
@@ -70,10 +70,10 @@ export const Display = () => {
 
 const Main = styled.div`
     height:100vh;
-    width:100vw;
+    width:95vw;
     display: flex;
     flex-direction: column;
-    /* justify-content: space-around; */
+    align-self:center;
     align-items:center;
 
 `
@@ -87,7 +87,7 @@ const Lower = styled.div`
         display: grid;
         justify-content: space-evenly;
         align-items: center;
-        grid-template-columns: repeat(2,1fr);
+        grid-template-columns: repeat(3,1fr);
     }
     @media screen and (max-width: 900px) {
       display: flex;

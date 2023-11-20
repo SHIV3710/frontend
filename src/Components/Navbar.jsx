@@ -44,6 +44,7 @@ const Main = styled.div`
       .name{
         margin-right:10px;
         font-size:10px;
+        font-weight:bold;
       }
       justify-content: left;
       
