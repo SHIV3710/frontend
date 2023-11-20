@@ -15,7 +15,7 @@ export const Sort = ({help}) => {
     const [url,seturl] = useState("/");
     const navigate = useNavigate();
     const handleDisplay = async () => {
-        setdisplay(!display);
+        setdisplay(prev=>!prev);
     }
     useEffect(()=>{
         handleDisplay();
@@ -37,10 +37,10 @@ export const Sort = ({help}) => {
         
     },[status,priority])
     const handlestatus = () => {
-        setstatus(!status);  
+        setstatus(!status);
     }
     const handlepriority = () => {
-        setpriority(!priority);
+        setstatus(!priority);
     }
     console.log(url);
   return (

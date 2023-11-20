@@ -27,7 +27,7 @@ export const Display = () => {
     const getallstatus = async () => {
         try {
 
-            const res = await axios.get("http://localhost:4000/api/quick/getallstatus");
+            const res = await axios.get("https://backend-eight-mu.vercel.app/api/quick/getallstatus");
             console.log(res);
             setstatus(res.data.result);
             

@@ -11,7 +11,7 @@ export const Card = ({card,flag}) => {
   const [avai,setavai] = useState(false);
   const findavatar = async () => {
     try {
-       const status = await axios.get("http://localhost:4000/api/quick/getuser",{
+       const status = await axios.get("https://backend-eight-mu.vercel.app/api/quick/getuser",{
         params:{
           Id:card.UserID,
         }

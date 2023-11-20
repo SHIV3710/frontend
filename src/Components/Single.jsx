@@ -32,7 +32,7 @@ export const Single = ({navname,flag,icon=<FaCheckCircle/>}) => {
 
       if(flag=="user"){
           try {
-              res = await axios.get("http://localhost:4000/api/quick/getuser",{
+              res = await axios.get("https://backend-eight-mu.vercel.app/api/quick/getuser",{
               params:{
               Name:name,
             }
@@ -47,7 +47,7 @@ export const Single = ({navname,flag,icon=<FaCheckCircle/>}) => {
 
             const priority = parseInt(name);
 
-            res = await axios.get("http://localhost:4000/api/quick/gettaskpriority",{
+            res = await axios.get("https://backend-eight-mu.vercel.app/api/quick/gettaskpriority",{
               params:{
                 Priority:priority,
               }
@@ -62,7 +62,7 @@ export const Single = ({navname,flag,icon=<FaCheckCircle/>}) => {
       }
       else if(flag=="status"){
         try {
-          res = await axios.get("http://localhost:4000/api/quick/gettask",{
+          res = await axios.get("https://backend-eight-mu.vercel.app/api/quick/gettask",{
             params:{
               Status:name,
             }
