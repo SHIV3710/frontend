@@ -17,7 +17,7 @@ import { FaBarsProgress } from "react-icons/fa6";
 import { MdOutlinePendingActions } from "react-icons/md";
 
 export const Single = ({navname,flag,icon=<FaCheckCircle/>,sort,avai}) => {
-  console.log(navname,avai);
+  // console.log(navname,avai);
   const [task,settask] = useState([]);
   const prior = ["No Priority","Urgent","High","Medium","Low"];
   const icons = [<RxBorderDotted/>,<PiFireSimpleFill style={{color:"orange"}}/>,<MdNetworkWifi3Bar/>,<MdNetworkWifi2Bar/>,<MdNetworkWifi1Bar/>];
@@ -32,7 +32,7 @@ export const Single = ({navname,flag,icon=<FaCheckCircle/>,sort,avai}) => {
 
       if(flag=="user"){
           try {
-              res = await axios.get("http://localhost:4000/api/quick/getuser",{
+              res = await axios.get("https://backend-eight-peach.vercel.app/api/quick/getuser",{
               params:{
               Name:name,
             }
@@ -45,9 +45,10 @@ export const Single = ({navname,flag,icon=<FaCheckCircle/>,sort,avai}) => {
       else if(flag=="priority"){
           try {
 
-            const priority = parseInt(name);
+            const priority = parseInt(navname);
+            console.log(priority);
 
-            res = await axios.get("http://localhost:4000/api/quick/gettaskpriority",{
+            res = await axios.get("https://backend-eight-peach.vercel.app/api/quick/gettaskpriority",{
               params:{
                 Priority:priority,
               }
@@ -62,7 +63,7 @@ export const Single = ({navname,flag,icon=<FaCheckCircle/>,sort,avai}) => {
       }
       else if(flag=="status"){
         try {
-          res = await axios.get("http://localhost:4000/api/quick/gettask",{
+          res = await axios.get("https://backend-eight-peach.vercel.app/api/quick/gettask",{
             params:{
               Status:name,
             }
@@ -96,7 +97,7 @@ export const Single = ({navname,flag,icon=<FaCheckCircle/>,sort,avai}) => {
       console.log(error);
     }
   }
-  console.log(sort);
+  // console.log(sort);
 
   useEffect(()=>{
     handlesort();

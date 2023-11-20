@@ -6,14 +6,14 @@ import { Sort } from '../Components/Sort';
 import { Single } from '../Components/Single';
 
 // https://backend-eight-mu.vercel.app/api/quick/task
-
+// https://backend-eight-peach.vercel.app/
 export const SortbyUser = ({sort}) => {
   const [users, setUsers] = useState([]);
   const [sortedUsers, setSortedUsers] = useState([]);
 
   const getAllUsers = async () => {
     try {
-      const status = await axios.get("http://localhost:4000/api/quick/task");
+      const status = await axios.get("https://backend-eight-peach.vercel.app/api/quick/task");
       console.log(status);
       setUsers(status.data.result);
 

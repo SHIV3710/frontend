@@ -61,6 +61,7 @@ export const Sort = ({help,cut}) => {
         if(status){
             setstatus(!status);
         }
+        // setdisplay(false);
     }
     const handlest = () => {
         setst(true);
@@ -71,6 +72,9 @@ export const Sort = ({help,cut}) => {
         if(sortst){
             setsortst(false);
         }
+        setdisplay(false);
+        setstatus(false);
+        setpriority(false);
     }
     const handlepr = () => {
         setpr(true);
@@ -81,6 +85,10 @@ export const Sort = ({help,cut}) => {
         if(sortst){
             setsortst(false);
         }
+        setdisplay(false);
+        setstatus(false);
+        setpriority(false);
+
     }
     const handleur = () => {
         setpr(false);
@@ -89,18 +97,28 @@ export const Sort = ({help,cut}) => {
         if(sortst){
             setsortst(false);
         }
+        setdisplay(false);
+
+        setstatus(false);
+        setpriority(false);
     }
     const handlesortpr = () => {
         setsortpr(true);
         if(sortst){
             setsortst(false);
         }
+        setdisplay(false);
+        setstatus(false);
+        setpriority(false);
     }
     const handlesorttitle = () => {
         setsortst(true);
         if(sortpr){
             setsortpr   (false);
         }
+        setdisplay(false);
+        setstatus(false);
+        setpriority(false);
     }
     
   return (
