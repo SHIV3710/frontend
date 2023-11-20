@@ -63,26 +63,44 @@ export const Sort = ({help,cut}) => {
         }
     }
     const handlest = () => {
-        setst(!st);
+        setst(true);
         if(pr){
             setpr(!pr);
         }
+        setsortpr(true);
+        if(sortst){
+            setsortst(false);
+        }
     }
     const handlepr = () => {
-        setpr(!pr);
+        setpr(true);
         if(st){
             setst(!st);
+        }
+        setsortpr(true);
+        if(sortst){
+            setsortst(false);
         }
     }
     const handleur = () => {
         setpr(false);
         setst(false);
+        setsortpr(true);
+        if(sortst){
+            setsortst(false);
+        }
     }
     const handlesortpr = () => {
-        setsortpr(!sortpr);
+        setsortpr(true);
+        if(sortst){
+            setsortst(false);
+        }
     }
     const handlesorttitle = () => {
-        setsortst(!sortst);
+        setsortst(true);
+        if(sortpr){
+            setsortpr   (false);
+        }
     }
     
   return (
@@ -126,6 +144,7 @@ const Main = styled.div`
     height:150px;
     margin:10px;
     max-width:100vw;
+    user-select:none;
 
 `
 const Dis = styled.div`

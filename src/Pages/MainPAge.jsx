@@ -8,7 +8,7 @@ import { SortbyPriority } from './SortbyPriority';
 export const MainPAge = () => {
 
     const [url,seturl] = useState("/");
-    const [sort,setsort] = useState("priority");
+    const [sort,setsort] = useState("");
  
     const handleurl = (newvalue) => {
         seturl(newvalue);

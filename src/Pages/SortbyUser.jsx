@@ -12,7 +12,7 @@ export const SortbyUser = ({sort}) => {
   const getAllUsers = async () => {
     try {
       const status = await axios.get("https://backend-eight-mu.vercel.app/api/quick/task");
-      // console.log(status);
+     
       setUsers(status.data.result);
     } catch (error) {
       console.log(error);

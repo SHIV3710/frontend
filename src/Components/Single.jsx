@@ -96,14 +96,14 @@ export const Single = ({navname,flag,icon=<FaCheckCircle/>,sort}) => {
       console.log(error);
     }
   }
-  console.log({sort});
+  console.log(sort);
   // console.log("unsorted",task);
 
   useEffect(()=>{
     handlesort();
   },[sort])
 
-  console.log("sorted",task);
+  // console.log("sorted",task);
   return (
     <Main>
         {flag=="priority"?
